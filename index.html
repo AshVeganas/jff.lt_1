@@ -9,251 +9,226 @@
       overflow: hidden;
       font-family: 'Comic Sans MS', cursive;
       color: lime;
-      user-select: none;
     }
     body {
       background: linear-gradient(-45deg, red, cyan, lime, magenta);
-      background-size: 800% 800%;
-      animation: chaoticBG 1.5s infinite linear;
+      background-size: 400% 400%;
+      animation: chaoticBG 4s infinite linear;
     }
     @keyframes chaoticBG {
-      0% { background-position: 0% 50%; filter: hue-rotate(0deg); }
-      50% { background-position: 100% 50%; filter: hue-rotate(180deg); }
-      100% { background-position: 0% 50%; filter: hue-rotate(360deg); }
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
     h1 {
       text-align: center;
-      font-size: 5rem;
+      font-size: 4rem;
       color: red;
-      animation: shake 0.1s infinite alternate, flash 0.2s infinite;
-      margin-top: 10px;
-      text-shadow: 3px 3px yellow, -3px -3px blue;
+      animation: shake 0.3s infinite;
+      margin-top: 70px;
+      text-shadow: 2px 2px yellow;
+      z-index: 3;
+      position: relative;
     }
     @keyframes shake {
-      0% { transform: rotate(2deg); }
-      100% { transform: rotate(-2deg); }
-    }
-    @keyframes flash {
-      0% { color: red; }
-      50% { color: magenta; }
-      100% { color: yellow; }
+      0%,100% {transform: rotate(2deg);}
+      50% {transform: rotate(-2deg);}
     }
     #player {
       display: block;
-      margin: 10px auto;
+      margin: 20px auto;
       width: 960px;
       height: 540px;
       border: 10px double cyan;
-      box-shadow: 0 0 80px magenta, 0 0 20px lime;
+      box-shadow: 0 0 50px magenta;
       z-index: 2; position: relative;
-      transform: rotate(0.5deg);
     }
     button#nextBtn {
-      display: block;
-      margin: 20px auto;
+      display: block; margin: 20px auto;
       padding: 20px 40px;
       font-size: 1.8rem;
-      background: yellow;
-      border: 4px dashed magenta;
-      border-radius: 30px;
-      cursor: pointer;
+      background: yellow; border: 4px dashed magenta;
+      border-radius: 30px; cursor: pointer;
       font-weight: bold;
-      animation: spin 2s linear infinite, pulse 0.3s infinite alternate;
-      z-index: 2;
-      position: relative;
+      z-index: 2; position: relative;
+      animation: spin 2s linear infinite;
     }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      100% { transform: scale(1.1); }
-    }
-    .floating-gif {
+    @keyframes spin { 100% {transform: rotate(360deg);} }
+    .floating-gif, .flying-text {
       position: fixed;
       pointer-events: none;
       z-index: 1;
-      opacity: 0.95;
-      mix-blend-mode: difference;
-      filter: hue-rotate(180deg);
+      opacity: 0.9;
+      mix-blend-mode: lighten;
     }
     .minigame {
-      position: fixed;
-      background: #111;
-      border: 2px solid lime;
-      padding: 10px;
-      width: 200px;
-      color: lime;
-      font-size: 14px;
-      font-weight: bold;
-      z-index: 10;
-      animation: glow 0.5s infinite alternate;
-    }
-    @keyframes glow {
-      from { box-shadow: 0 0 5px lime; }
-      to { box-shadow: 0 0 20px red; }
+      position: fixed; background: #111; border: 2px solid lime;
+      padding: 10px; width: 200px; color: lime; font-size: 14px;
+      font-weight: bold; z-index: 10;
     }
     #game1 { bottom:10px; left:10px; }
     #game2 { bottom:10px; left:230px; }
     #game3 { bottom:10px; left:450px; }
     .mini-btn {
-      margin-top:10px;
-      width:100%;
-      padding:8px;
-      background:orange;
-      color:black;
-      border:2px solid red;
-      font-weight:bold;
+      margin-top:10px; width:100%; padding:8px; background:orange;
+      color:black; border:2px solid red; font-weight:bold;
       cursor:pointer;
-      animation: jank 0.2s infinite alternate;
-    }
-    @keyframes jank {
-      from { transform: rotate(-2deg); }
-      to { transform: rotate(2deg); }
     }
     #chatbox {
-      position: fixed;
-      bottom:10px;
-      right:10px;
-      width:260px;
-      height:300px;
-      background:#000;
-      color:lime;
-      font-family:monospace;
-      border:3px solid lime;
-      display:flex;
-      flex-direction:column;
-      z-index:10;
-      animation: flicker 0.3s infinite alternate;
-    }
-    @keyframes flicker {
-      from { opacity: 0.95; }
-      to { opacity: 1; }
+      position: fixed; bottom:10px; right:10px;
+      width:260px; height:300px; background:#000;
+      color:lime; font-family:monospace; border:3px solid lime;
+      display:flex; flex-direction:column; z-index:10;
     }
     #chatlog {
-      flex:1;
-      padding:10px;
-      overflow-y:auto;
+      flex:1; padding:10px; overflow-y:auto;
       border-bottom:2px solid lime;
     }
     #chatinput {
-      padding:10px;
-      border:none;
-      background:black;
-      color:lime;
-      outline:none;
+      padding:10px; border:none; background:black;
+      color:lime; outline:none;
     }
-    #adBanner {
+    .ad-banner {
       position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%) rotate(-2deg);
-      padding: 10px 20px;
+      top: 0;
+      width: 100%;
       background: red;
       color: yellow;
+      text-align: center;
       font-size: 1.5rem;
       font-weight: bold;
-      border: 3px dashed cyan;
-      z-index: 999;
-      animation: shake 0.3s infinite, flash 0.6s infinite alternate;
+      padding: 10px;
+      z-index: 9999;
+      animation: flash 0.5s infinite alternate;
+    }
+    @keyframes flash {
+      from { background: red; }
+      to { background: magenta; }
     }
   </style>
 </head>
 <body>
-  <h1>I HAVE SHIT IN MY EYES</h1>
-  <div id="adBanner">⚠️ DON'T VISIT LAURYS UPLOAD PROJECT — HE'S STEALING YOUR IP AND RAM 💻🔥</div>
-  <div id="player"></div>
-  <button id="nextBtn">More autism</button>
 
-  <div class="minigame" id="game1">
-    <div>Clicks: <span id="clicks">0</span></div>
-    <button class="mini-btn" onclick="clicks++;updateStats();">Click troll</button>
-    <div>SEX • HERO GAY • YOUR IP IS MINE</div>
-  </div>
-  <div class="minigame" id="game2">
-    <div>Bombs: <span id="bombs">0</span></div>
-    <button class="mini-btn" onclick="bombs++;updateStats();alert('BOOM! Just joking');">Defuse bomb</button>
-    <div>HARAM • LITHUANIA IS WATCHING</div>
-  </div>
-  <div class="minigame" id="game3">
-    <div>Score: <span id="score">0</span></div>
-    <button class="mini-btn" id="runBtn">Catch me</button>
-    <div>JFF4EVER • WHY R U LIKE THIS</div>
-  </div>
+<div class="ad-banner">⚠️ DON'T VISIT LAURYS UPLOAD PROJECT — HE'S STEALING YOUR IP AND RAM 💻🔥</div>
+<h1>I HAVE SHIT IN MY EYES</h1>
+<div id="player"></div>
+<button id="nextBtn">More autism</button>
 
-  <div id="chatbox">
-    <div id="chatlog">Customer Support: Hello.<br></div>
-    <input id="chatinput" type="text" placeholder="Type here..." />
-  </div>
+<!-- Minigames -->
+<div class="minigame" id="game1">
+  <div>Clicks: <span id="clicks">0</span></div>
+  <button class="mini-btn" onclick="clicks++;updateStats();">Click troll</button>
+</div>
+<div class="minigame" id="game2">
+  <div>Bombs: <span id="bombs">0</span></div>
+  <button class="mini-btn" onclick="bombs++;updateStats();alert('BOOM! Just joking');">Defuse bomb</button>
+</div>
+<div class="minigame" id="game3">
+  <div>Score: <span id="score">0</span></div>
+  <button class="mini-btn" id="runBtn">Catch me</button>
+</div>
 
-  <script>
-    const videos=["naUGQl02N1M","MsCXTR8gU8","omRYig9Xuqc","ifgdgFae-_g","oSKeQsysuvo","GBkPMPOM_vk","C-aexeQdsRQ","i5trPI2YRpw","hDcRpJFrjTU","ZPqj1WI8d0k","4qHdwbpf4SE","1D9oiW1wnYo","uoufDnDHK9s","7GBLZ1SHEwk","p3imdwn8TrE","bJ7yQc4SATc","CYGmCqCnToY","cCchepvm6ck","Aero-g23QuY","WWdX158Intw"];
-    let player;
-    function getRandomVideoId(){return videos[Math.floor(Math.random()*videos.length)];}
-    function playRandom(){
-      const id = getRandomVideoId();
-      if(player) player.loadVideoById(id);
-      else player = new YT.Player('player',{videoId:id,width:960,height:540,playerVars:{autoplay:1},events:{'onStateChange':e=>{if(e.data===YT.PlayerState.ENDED)playRandom();}}});
+<!-- Chatbox -->
+<div id="chatbox">
+  <div id="chatlog">Customer Support: Hello.<br></div>
+  <input id="chatinput" type="text" placeholder="Type here..." />
+</div>
+
+<script>
+  const videos=["naUGQl02N1M","MsCXTR8gU8","omRYig9Xuqc","ifgdgFae-_g","oSKeQsysuvo","GBkPMPOM_vk","C-aexeQdsRQ","i5trPI2YRpw","hDcRpJFrjTU","ZPqj1WI8d0k","4qHdwbpf4SE","1D9oiW1wnYo","uoufDnDHK9s","7GBLZ1SHEwk","p3imdwn8TrE","bJ7yQc4SATc","CYGmCqCnToY","cCchepvm6ck","Aero-g23QuY","WWdX158Intw"];
+  let player;
+  function getRandomVideoId(){return videos[Math.floor(Math.random()*videos.length)];}
+  function playRandom(){
+    const id = getRandomVideoId();
+    if(player) player.loadVideoById(id);
+    else player = new YT.Player('player',{videoId:id,width:960,height:540,playerVars:{autoplay:1},events:{'onStateChange':e=>{if(e.data===YT.PlayerState.ENDED)playRandom();}}});
+  }
+  document.getElementById("nextBtn").onclick = playRandom;
+  let tag=document.createElement('script');tag.src="https://www.youtube.com/iframe_api";document.body.appendChild(tag);
+  window.onYouTubeIframeAPIReady = playRandom;
+
+  let clicks=0,bombs=0,score=0;
+  function updateStats(){
+    document.getElementById('clicks').textContent=clicks;
+    document.getElementById('bombs').textContent=bombs;
+    document.getElementById('score').textContent=score;
+  }
+
+  document.getElementById('runBtn').addEventListener('mouseenter',()=>{
+    score++;
+    updateStats();
+    const x=Math.random()*200+50;
+    const y=Math.random()*150+30;
+    document.getElementById('runBtn').style.transform=`translate(${x}px,-${y}px)`;
+  });
+
+  const chatlog=document.getElementById('chatlog');
+  const chatinput=document.getElementById('chatinput');
+  chatinput.addEventListener('keydown',e=>{
+    if(e.key==='Enter'&&chatinput.value.trim()){
+      chatlog.innerHTML+=`<br>You: ${chatinput.value}<br>Support: sex`;
+      chatinput.value='';
+      chatlog.scrollTop=chatlog.scrollHeight;
     }
-    document.getElementById("nextBtn").onclick = playRandom;
-    let tag=document.createElement('script');tag.src="https://www.youtube.com/iframe_api";document.body.appendChild(tag);
-    window.onYouTubeIframeAPIReady = playRandom;
+  });
 
-    let clicks=0,bombs=0,score=0;
-    function updateStats(){
-      document.getElementById('clicks').textContent=clicks;
-      document.getElementById('bombs').textContent=bombs;
-      document.getElementById('score').textContent=score;
-    }
-
-    document.getElementById('runBtn').addEventListener('mouseenter',()=>{
-      score++;
-      updateStats();
-      const x=Math.random()*200+50;
-      const y=Math.random()*150+30;
-      document.getElementById('runBtn').style.transform=`translate(${x}px,-${y}px)`;
-    });
-
-    const chatlog=document.getElementById('chatlog');
-    const chatinput=document.getElementById('chatinput');
-    chatinput.addEventListener('keydown',e=>{
-      if(e.key==='Enter'&&chatinput.value.trim()){
-        chatlog.innerHTML+=`<br>You: ${chatinput.value}<br>Support: sex`;
-        chatinput.value='';
-        chatlog.scrollTop=chatlog.scrollHeight;
-      }
-    });
-
-    const gifURLs=[
-      "https://c.tenor.com/jAwHzSimJ7wAAAAd/tenor.gif",
-      "https://media.tenor.com/guKxsG1NljgAAAAj/lietuvos-v%C4%97liava-lietuva.gif",
-      "https://media1.tenor.com/m/73RRLx6AfYIAAAAd/kiesa-lithuania.gif",
-      "https://media1.tenor.com/m/tZNLr8qX5CQAAAAd/man-poxui-poxui-yra.gif",
-      "https://media1.tenor.com/m/acESOZ-dgioAAAAd/lithuania-lithuanian.gif",
-      "https://media1.tenor.com/m/5U1hjLnQ5b4AAAAd/lithuania-gmod.gif",
-      "https://media1.tenor.com/m/ZL5vV9eSQqsAAAAd/miau-svoguninis.gif",
-      "https://media1.tenor.com/m/VC75Bz1qeRYAAAAC/lithuania-flag-gif.gif",
-      "https://media1.tenor.com/m/uEZ0siVQaRYAAAAd/breakfast-pusryciai.gif",
-      "https://media.tenor.com/75N-IpbVRSoAAAAi/among-us-silly-face.gif"
-    ];
-    function spawnGif(){
-      const img=document.createElement('img');
-      img.src=gifURLs[Math.floor(Math.random()*gifURLs.length)];
-      img.className='floating-gif';
-      const size=50+Math.random()*120;img.style.width=size+'px';
-      let x=Math.random()*(window.innerWidth-size),y=Math.random()*(window.innerHeight-size);
+  const gifURLs=[
+    "https://c.tenor.com/jAwHzSimJ7wAAAAd/tenor.gif",
+    "https://media.tenor.com/guKxsG1NljgAAAAj/lietuvos-v%C4%97liava-lietuva.gif",
+    "https://media1.tenor.com/m/73RRLx6AfYIAAAAd/kiesa-lithuania.gif",
+    "https://media1.tenor.com/m/tZNLr8qX5CQAAAAd/man-poxui-poxui-yra.gif",
+    "https://media1.tenor.com/m/acESOZ-dgioAAAAd/lithuania-lithuanian.gif",
+    "https://media1.tenor.com/m/5U1hjLnQ5b4AAAAd/lithuania-gmod.gif",
+    "https://media1.tenor.com/m/ZL5vV9eSQqsAAAAd/miau-svoguninis.gif",
+    "https://media1.tenor.com/m/VC75Bz1qeRYAAAAC/lithuania-flag-gif.gif",
+    "https://media1.tenor.com/m/uEZ0siVQaRYAAAAd/breakfast-pusryciai.gif",
+    "https://media.tenor.com/75N-IpbVRSoAAAAi/among-us-silly-face.gif"
+  ];
+  function spawnGif(){
+    const img=document.createElement('img');
+    img.src=gifURLs[Math.floor(Math.random()*gifURLs.length)];
+    img.className='floating-gif';
+    const size=50+Math.random()*120;img.style.width=size+'px';
+    let x=Math.random()*(window.innerWidth-size),y=Math.random()*(window.innerHeight-size);
+    img.style.left=x+'px';img.style.top=y+'px';
+    document.body.appendChild(img);
+    let dx=(Math.random()-0.5)*4,dy=(Math.random()-0.5)*4;
+    function move(){
+      x+=dx;y+=dy;
+      if(x<0||x>window.innerWidth-size)dx*=-1;
+      if(y<0||y>window.innerHeight-size)dy*=-1;
       img.style.left=x+'px';img.style.top=y+'px';
-      document.body.appendChild(img);
-      let dx=(Math.random()-0.5)*4,dy=(Math.random()-0.5)*4;
-      function move(){
-        x+=dx;y+=dy;
-        if(x<0||x>window.innerWidth-size)dx*=-1;
-        if(y<0||y>window.innerHeight-size)dy*=-1;
-        img.style.left=x+'px';img.style.top=y+'px';
-        requestAnimationFrame(move);
-      }
-      move();
-      setTimeout(()=>img.remove(),10000);
+      requestAnimationFrame(move);
     }
-    setInterval(spawnGif,400);
-  </script>
+    move();
+    setTimeout(()=>img.remove(),15000);
+  }
+  setInterval(spawnGif,600);
+
+  const phrases = ["SEX", "HERO GAY", "YOUR IP IS MINE", "JFF4EVER", "LITHUANIA IS WATCHING", "HARAM"];
+  function spawnText(){
+    const div=document.createElement('div');
+    div.textContent=phrases[Math.floor(Math.random()*phrases.length)];
+    div.className='flying-text';
+    div.style.fontSize=(12+Math.random()*24)+'px';
+    div.style.color=['red','cyan','yellow','lime','magenta'][Math.floor(Math.random()*5)];
+    div.style.left=Math.random()*window.innerWidth+'px';
+    div.style.top=Math.random()*window.innerHeight+'px';
+    document.body.appendChild(div);
+    let dx=(Math.random()-0.5)*2,dy=(Math.random()-0.5)*2;
+    function drift(){
+      let rect=div.getBoundingClientRect();
+      if(rect.left<0||rect.right>window.innerWidth)dx*=-1;
+      if(rect.top<0||rect.bottom>window.innerHeight)dy*=-1;
+      div.style.left=(rect.left+dx)+'px';
+      div.style.top=(rect.top+dy)+'px';
+      requestAnimationFrame(drift);
+    }
+    drift();
+    setTimeout(()=>div.remove(),20000);
+  }
+  setInterval(spawnText,800);
+</script>
+
 </body>
 </html>
