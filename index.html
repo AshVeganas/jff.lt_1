@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>I HAVE SHIT IN MY EYES</title>
+  <style>
+    html, body {
+      margin: 0;
+      overflow: hidden;
+      font-family: 'Comic Sans MS', cursive;
+      color: lime;
+      user-select: none;
+    }
+    body {
+      background: linear-gradient(-45deg, red, cyan, lime, magenta);
+      background-size: 800% 800%;
+      animation: chaoticBG 1.5s infinite linear;
+    }
+    @keyframes chaoticBG {
+      0% { background-position: 0% 50%; filter: hue-rotate(0deg); }
+      50% { background-position: 100% 50%; filter: hue-rotate(180deg); }
+      100% { background-position: 0% 50%; filter: hue-rotate(360deg); }
+    }
+    h1 {
+      text-align: center;
+      font-size: 5rem;
+      color: red;
+      animation: shake 0.1s infinite alternate, flash 0.2s infinite;
+      margin-top: 10px;
+      text-shadow: 3px 3px yellow, -3px -3px blue;
+    }
+    @keyframes shake {
+      0% { transform: rotate(2deg); }
+      100% { transform: rotate(-2deg); }
+    }
+    @keyframes flash {
+      0% { color: red; }
+      50% { color: magenta; }
+      100% { color: yellow; }
+    }
+    #player {
+      display: block;
+      margin: 10px auto;
+      width: 960px;
+      height: 540px;
+      border: 10px double cyan;
+      box-shadow: 0 0 80px magenta, 0 0 20px lime;
+      z-index: 2; position: relative;
+      transform: rotate(0.5deg);
+    }
+    button#nextBtn {
+      display: block;
+      margin: 20px auto;
+      padding: 20px 40px;
+      font-size: 1.8rem;
+      background: yellow;
+      border: 4px dashed magenta;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      animation: spin 2s linear infinite, pulse 0.3s infinite alternate;
+      z-index: 2;
+      position: relative;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.1); }
+    }
+    .floating-gif {
+      position: fixed;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.95;
+      mix-blend-mode: difference;
+      filter: hue-rotate(180deg);
+    }
+    .minigame {
+      position: fixed;
+      background: #111;
+      border: 2px solid lime;
+      padding: 10px;
+      width: 200px;
+      color: lime;
+      font-size: 14px;
+      font-weight: bold;
+      z-index: 10;
+      animation: glow 0.5s infinite alternate;
+    }
+    @keyframes glow {
+      from { box-shadow: 0 0 5px lime; }
+      to { box-shadow: 0 0 20px red; }
+    }
+    #game1 { bottom:10px; left:10px; }
+    #game2 { bottom:10px; left:230px; }
+    #game3 { bottom:10px; left:450px; }
+    .mini-btn {
+      margin-top:10px;
+      width:100%;
+      padding:8px;
+      background:orange;
+      color:black;
+      border:2px solid red;
+      font-weight:bold;
+      cursor:pointer;
+      animation: jank 0.2s infinite alternate;
+    }
+    @keyframes jank {
+      from { transform: rotate(-2deg); }
+      to { transform: rotate(2deg); }
+    }
+    #chatbox {
+      position: fixed;
+      bottom:10px;
+      right:10px;
+      width:260px;
+      height:300px;
+      background:#000;
+      color:lime;
+      font-family:monospace;
+      border:3px solid lime;
+      display:flex;
+      flex-direction:column;
+      z-index:10;
+      animation: flicker 0.3s infinite alternate;
+    }
+    @keyframes flicker {
+      from { opacity: 0.95; }
+      to { opacity: 1; }
+    }
+    #chatlog {
+      flex:1;
+      padding:10px;
+      overflow-y:auto;
+      border-bottom:2px solid lime;
+    }
+    #chatinput {
+      padding:10px;
+      border:none;
+      background:black;
+      color:lime;
+      outline:none;
+    }
+    #adBanner {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-2deg);
+      padding: 10px 20px;
+      background: red;
+      color: yellow;
+      font-size: 1.5rem;
+      font-weight: bold;
+      border: 3px dashed cyan;
+      z-index: 999;
+      animation: shake 0.3s infinite, flash 0.6s infinite alternate;
+    }
+  </style>
+</head>
+<body>
+  <h1>I HAVE SHIT IN MY EYES</h1>
+  <div id="adBanner">⚠️ DON'T VISIT LAURYS UPLOAD PROJECT — HE'S STEALING YOUR IP AND RAM 💻🔥</div>
+  <div id="player"></div>
+  <button id="nextBtn">More autism</button>
+
+  <div class="minigame" id="game1">
+    <div>Clicks: <span id="clicks">0</span></div>
+    <button class="mini-btn" onclick="clicks++;updateStats();">Click troll</button>
+    <div>SEX • HERO GAY • YOUR IP IS MINE</div>
+  </div>
+  <div class="minigame" id="game2">
+    <div>Bombs: <span id="bombs">0</span></div>
+    <button class="mini-btn" onclick="bombs++;updateStats();alert('BOOM! Just joking');">Defuse bomb</button>
+    <div>HARAM • LITHUANIA IS WATCHING</div>
+  </div>
+  <div class="minigame" id="game3">
+    <div>Score: <span id="score">0</span></div>
+    <button class="mini-btn" id="runBtn">Catch me</button>
+    <div>JFF4EVER • WHY R U LIKE THIS</div>
+  </div>
+
+  <div id="chatbox">
+    <div id="chatlog">Customer Support: Hello.<br></div>
+    <input id="chatinput" type="text" placeholder="Type here..." />
+  </div>
+
+  <script>
+    const videos=["naUGQl02N1M","MsCXTR8gU8","omRYig9Xuqc","ifgdgFae-_g","oSKeQsysuvo","GBkPMPOM_vk","C-aexeQdsRQ","i5trPI2YRpw","hDcRpJFrjTU","ZPqj1WI8d0k","4qHdwbpf4SE","1D9oiW1wnYo","uoufDnDHK9s","7GBLZ1SHEwk","p3imdwn8TrE","bJ7yQc4SATc","CYGmCqCnToY","cCchepvm6ck","Aero-g23QuY","WWdX158Intw"];
+    let player;
+    function getRandomVideoId(){return videos[Math.floor(Math.random()*videos.length)];}
+    function playRandom(){
+      const id = getRandomVideoId();
+      if(player) player.loadVideoById(id);
+      else player = new YT.Player('player',{videoId:id,width:960,height:540,playerVars:{autoplay:1},events:{'onStateChange':e=>{if(e.data===YT.PlayerState.ENDED)playRandom();}}});
+    }
+    document.getElementById("nextBtn").onclick = playRandom;
+    let tag=document.createElement('script');tag.src="https://www.youtube.com/iframe_api";document.body.appendChild(tag);
+    window.onYouTubeIframeAPIReady = playRandom;
+
+    let clicks=0,bombs=0,score=0;
+    function updateStats(){
+      document.getElementById('clicks').textContent=clicks;
+      document.getElementById('bombs').textContent=bombs;
+      document.getElementById('score').textContent=score;
+    }
+
+    document.getElementById('runBtn').addEventListener('mouseenter',()=>{
+      score++;
+      updateStats();
+      const x=Math.random()*200+50;
+      const y=Math.random()*150+30;
+      document.getElementById('runBtn').style.transform=`translate(${x}px,-${y}px)`;
+    });
+
+    const chatlog=document.getElementById('chatlog');
+    const chatinput=document.getElementById('chatinput');
+    chatinput.addEventListener('keydown',e=>{
+      if(e.key==='Enter'&&chatinput.value.trim()){
+        chatlog.innerHTML+=`<br>You: ${chatinput.value}<br>Support: sex`;
+        chatinput.value='';
+        chatlog.scrollTop=chatlog.scrollHeight;
+      }
+    });
+
+    const gifURLs=[
+      "https://c.tenor.com/jAwHzSimJ7wAAAAd/tenor.gif",
+      "https://media.tenor.com/guKxsG1NljgAAAAj/lietuvos-v%C4%97liava-lietuva.gif",
+      "https://media1.tenor.com/m/73RRLx6AfYIAAAAd/kiesa-lithuania.gif",
+      "https://media1.tenor.com/m/tZNLr8qX5CQAAAAd/man-poxui-poxui-yra.gif",
+      "https://media1.tenor.com/m/acESOZ-dgioAAAAd/lithuania-lithuanian.gif",
+      "https://media1.tenor.com/m/5U1hjLnQ5b4AAAAd/lithuania-gmod.gif",
+      "https://media1.tenor.com/m/ZL5vV9eSQqsAAAAd/miau-svoguninis.gif",
+      "https://media1.tenor.com/m/VC75Bz1qeRYAAAAC/lithuania-flag-gif.gif",
+      "https://media1.tenor.com/m/uEZ0siVQaRYAAAAd/breakfast-pusryciai.gif",
+      "https://media.tenor.com/75N-IpbVRSoAAAAi/among-us-silly-face.gif"
+    ];
+    function spawnGif(){
+      const img=document.createElement('img');
+      img.src=gifURLs[Math.floor(Math.random()*gifURLs.length)];
+      img.className='floating-gif';
+      const size=50+Math.random()*120;img.style.width=size+'px';
+      let x=Math.random()*(window.innerWidth-size),y=Math.random()*(window.innerHeight-size);
+      img.style.left=x+'px';img.style.top=y+'px';
+      document.body.appendChild(img);
+      let dx=(Math.random()-0.5)*4,dy=(Math.random()-0.5)*4;
+      function move(){
+        x+=dx;y+=dy;
+        if(x<0||x>window.innerWidth-size)dx*=-1;
+        if(y<0||y>window.innerHeight-size)dy*=-1;
+        img.style.left=x+'px';img.style.top=y+'px';
+        requestAnimationFrame(move);
+      }
+      move();
+      setTimeout(()=>img.remove(),10000);
+    }
+    setInterval(spawnGif,400);
+  </script>
+</body>
+</html>
