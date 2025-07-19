@@ -1,0 +1,1 @@
+const phrases = ["I EAT WIFI SIGNAL","YOUR BRAIN IS A JPEG"]
