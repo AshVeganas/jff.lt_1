@@ -1,58 +1,105 @@
+// Load random video
 function loadRandomVideo() {
-  const index = Math.floor(Math.random() * videos.length);
-  document.getElementById("ytplayer").src = videos[index];
+  const randomId = videoLinks[Math.floor(Math.random() * videoLinks.length)];
+  const iframe = document.getElementById("ytplayer");
+  iframe.src = `https://www.youtube.com/embed/${randomId}?autoplay=1&rel=0`;
 }
-loadRandomVideo();
-loadMiniGames();
 
-function handleChat(e) {
-  if (e.key === "Enter") {
+// Flying GIFs & Phrases
+function spawnFlyingStuff() {
+  for (let gif of gifs) {
+    const img = document.createElement("img");
+    img.src = gif;
+    img.className = "floating-gif";
+    img.style.top = Math.random() * window.innerHeight + "px";
+    img.style.left = Math.random() * window.innerWidth + "px";
+    img.style.width = 100 + Math.random() * 100 + "px";
+    document.body.appendChild(img);
+    moveRandom(img);
+  }
+
+  for (let phrase of phrases) {
+    const div = document.createElement("div");
+    div.className = "floating-phrase";
+    div.innerText = phrase;
+    div.style.top = Math.random() * window.innerHeight + "px";
+    div.style.left = Math.random() * window.innerWidth + "px";
+    div.style.color = getRandomColor();
+    div.style.fontSize = 16 + Math.random() * 24 + "px";
+    document.body.appendChild(div);
+    moveRandom(div);
+  }
+}
+
+function moveRandom(el) {
+  setInterval(() => {
+    el.style.top = Math.random() * (window.innerHeight - 100) + "px";
+    el.style.left = Math.random() * (window.innerWidth - 100) + "px";
+  }, 1500 + Math.random() * 2000);
+}
+
+function getRandomColor() {
+  const letters = "0123456789ABCDEF";
+  let c = "#";
+  for (let i = 0; i < 6; i++) c += letters[Math.floor(Math.random() * 16)];
+  return c;
+}
+
+// Chat system
+function handleChat(event) {
+  if (event.key === "Enter") {
     const input = document.getElementById("chatInput");
-    const msg = input.value;
     const chatLog = document.getElementById("chatLog");
-    chatLog.innerHTML += `<br>You: ${msg}<br>JFF.LT Support: ${msg.toLowerCase().includes("artūras") ? "SEX WITH ARTŪRAS" : "sex"}`;
+    const message = input.value;
+    chatLog.innerHTML += `<br>You: ${message}`;
+    if (/artūras/i.test(message)) {
+      chatLog.innerHTML += `<br>JFF.LT Support: SEX WITH ARTŪRAS`;
+    } else {
+      chatLog.innerHTML += `<br>JFF.LT Support: sex`;
+    }
     input.value = "";
   }
 }
 
+// Fake Login
 function fakeLogin() {
-  document.getElementById("admin-login").classList.add("hidden");
+  document.getElementById("admin-login").style.display = "none";
   document.getElementById("admin-panel").classList.remove("hidden");
 }
 
-setInterval(() => {
-  const img = document.createElement("img");
-  img.src = gifs[Math.floor(Math.random() * gifs.length)];
-  img.className = "floating-gif";
-  img.style.left = Math.random() * window.innerWidth + "px";
-  img.style.top = Math.random() * window.innerHeight + "px";
-  document.body.appendChild(img);
-
-  const phrase = document.createElement("div");
-  phrase.textContent = phrases[Math.floor(Math.random() * phrases.length)];
-  phrase.className = "flying-text";
-  phrase.style.left = Math.random() * window.innerWidth + "px";
-  phrase.style.top = Math.random() * window.innerHeight + "px";
-  document.body.appendChild(phrase);
-}, 3000);
-
-// DVD Logo movement
+// DVD logo
 let dvd = document.getElementById("dvdLogo");
-let dx = 2, dy = 2;
-let x = 100, y = 100;
-function animateDVD() {
-  x += dx;
-  y += dy;
-  if (x + dvd.offsetWidth >= window.innerWidth || x <= 0) dx *= -1;
-  if (y + dvd.offsetHeight >= window.innerHeight || y <= 0) dy *= -1;
+let dx = 2;
+let dy = 2;
 
-  dvd.style.left = x + "px";
-  dvd.style.top = y + "px";
+function bounceDVD() {
+  let rect = dvd.getBoundingClientRect();
+  let x = dvd.offsetLeft;
+  let y = dvd.offsetTop;
 
-  if ((x <= 0 || x + dvd.offsetWidth >= window.innerWidth) &&
-      (y <= 0 || y + dvd.offsetHeight >= window.innerHeight)) {
-    alert("🎉 YOU WON A DATE WITH ARTŪRAS 🎉");
+  if (x + rect.width >= window.innerWidth || x <= 0) {
+    dx = -dx;
   }
-  requestAnimationFrame(animateDVD);
+  if (y + rect.height >= window.innerHeight || y <= 0) {
+    dy = -dy;
+  }
+
+  dvd.style.left = x + dx + "px";
+  dvd.style.top = y + dy + "px";
+
+  // Perfect corner hit detection
+  if (
+    (x <= 0 || x + rect.width >= window.innerWidth) &&
+    (y <= 0 || y + rect.height >= window.innerHeight)
+  ) {
+    alert("🎉 You have won a free date with Artūras!");
+  }
+
+  requestAnimationFrame(bounceDVD);
 }
-animateDVD();
+
+window.onload = () => {
+  loadRandomVideo();
+  spawnFlyingStuff();
+  bounceDVD();
+};
