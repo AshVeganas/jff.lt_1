@@ -36,4 +36,39 @@ const minigames = [
       function keyHandler() {
         counter++;
         if (counter > 50) {
-          alert("You typed a lot! But your
+          alert("You typed a lot! But your score is still 0.");
+          window.removeEventListener("keydown", keyHandler);
+        }
+      }
+      window.addEventListener("keydown", keyHandler);
+    },
+  },
+  {
+    name: "Spam Alert",
+    play: () => {
+      alert("SPAM SPAM SPAM SPAM!!!");
+      let count = 0;
+      const spamInterval = setInterval(() => {
+        alert("SPAM!!!");
+        count++;
+        if (count >= 5) clearInterval(spamInterval);
+      }, 1000);
+    },
+  },
+  {
+    name: "Random Color Madness",
+    play: () => {
+      alert("Watch your eyes! Colors will go crazy!");
+      const body = document.body;
+      let interval = setInterval(() => {
+        body.style.backgroundColor = getRandomColor();
+      }, 200);
+
+      setTimeout(() => {
+        clearInterval(interval);
+        body.style.backgroundColor = "#121212";
+        alert("Color madness ended!");
+      }, 5000);
+    },
+  },
+];
