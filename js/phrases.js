@@ -1,4 +1,3 @@
-// Flying cursed phrases to spam around
 const phrases = [
   "YOLO SWAG 420 BLAZE IT",
   "IM NOT A ROBOT",
