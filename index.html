@@ -2,36 +2,56 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>I HAVE SHIT IN MY EYES</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <div class="ad-banner">⚠️ WARNING: DO NOT VISIT LAURYS UPLOAD PROJECT, HE WILL STEAL YOUR IQ AND HACK YOU GRANDMA ⚠️</div>
-  
-  <header class="crazy-title">I HAVE SHIT IN MY EYES</header>
+  <header>
+    <div id="adBanner">
+      ⚠️ WARNING: DO NOT VISIT LAURYS UPLOAD PROJECT, HE WILL STEAL YOUR IQ AND HACK YOU GRANDMA ⚠️
+    </div>
+    <h1 id="title">I HAVE SHIT IN MY EYES</h1>
+  </header>
 
-  <div class="video-container">
-    <iframe id="ytplayer" frameborder="0" allowfullscreen></iframe>
-    <br />
-    <button class="random-btn" onclick="loadRandomVideo()">more autism</button>
-  </div>
+  <main>
+    <div id="video-container">
+      <iframe
+        id="ytplayer"
+        width="560"
+        height="315"
+        src=""
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+      ></iframe>
+      <br />
+      <button id="randomVideoBtn" title="more autism" class="spinning">
+        MORE AUTISM
+      </button>
+    </div>
 
-  <div id="minigames"></div>
+    <div id="minigames"></div>
 
-  <div class="chat-box" id="chatBox">
-    <div id="chatLog">JFF.LT Support: How can I help you?<br /></div>
-    <input type="text" id="chatInput" placeholder="Say something..." onkeydown="handleChat(event)" />
-  </div>
+    <div id="chat">
+      <h2>JFF.LT support</h2>
+      <div id="chatLog" style="height: 150px; overflow-y: scroll; border: 1px solid white; padding: 10px; background: black; color: white;"></div>
+      <input
+        id="chatInput"
+        type="text"
+        placeholder="Ask something..."
+        autocomplete="off"
+      />
+    </div>
 
-  <div id="admin-login" class="login-screen moved">
-    <h2>Login</h2>
-    <input type="text" placeholder="Username" id="login-user" /><br />
-    <input type="password" placeholder="Password" id="login-pass" /><br />
-    <button onclick="fakeLogin()">Login</button>
-  </div>
+    <div id="admin-login">
+      <h2>Login</h2>
+      <input id="username" placeholder="Username" /><br />
+      <input id="password" type="password" placeholder="Password" /><br />
+      <button onclick="fakeLogin()">Login</button>
+    </div>
 
-  <div id="admin-panel" class="admin-panel hidden">
+    <div id="admin-panel" class="hidden">
     <h1>Welcome to Admin Control</h1>
     <p>Press buttons to control official JFF.LT site.</p>
     <button onclick="alert('Banning all players.')">Global Ban Hammer</button>
@@ -41,9 +61,15 @@
     <button onclick="alert('Error 458774: task has failed!')">Make HeroBaskan straight</button>
     <button onclick="alert('Fucking russians')">TEST</button>
     <p style="color:red;">(There are no fail-safes, use at your own risk!)</p>
-  </div>
+    </div>
+  </main>
 
-  <div id="dvdLogo" class="dvd-logo">DVD</div>
+  <img
+    id="dvdLogo"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/DVD_logo.svg/120px-DVD_logo.svg.png"
+    alt="DVD Logo"
+    style="position: fixed; top: 100px; left: 100px; width: 80px; height: 40px; user-select:none; pointer-events:none;"
+  />
 
   <script src="js/videos.js"></script>
   <script src="js/gifs.js"></script>
