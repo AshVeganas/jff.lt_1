@@ -1,6 +1,5 @@
-// Just paste new YouTube video IDs here
 const videoLinks = [
-  "dQw4w9WgXcQ", // classic
+  "dQw4w9WgXcQ",
   "L_jWHffIx5E",
   "2ZIpFytCSVc",
   "tVj0ZTS4WF4",
