@@ -1,4 +1,3 @@
-// List of cursed GIF URLs
 const gifs = [
   "https://media.tenor.com/DniD0D6B0N0AAAAi/silly-cat.gif",
   "https://media.tenor.com/B5uGDKFiYHEAAAAi/spin.gif",
