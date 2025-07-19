@@ -1,0 +1,15 @@
+// Flying cursed phrases to spam around
+const phrases = [
+  "YOLO SWAG 420 BLAZE IT",
+  "IM NOT A ROBOT",
+  "SEND NUDES",
+  "I LOVE ARTŪRAS",
+  "JFF.LT OR BUST",
+  "MEMES > LIFE",
+  "WHY SO SERIOUS?",
+  "THIS IS FINE",
+  "PEW PEW LASERS",
+  "CLICKBAIT ALERT",
+  "FBI OPEN UP!",
+  "ERROR 404 IQ NOT FOUND"
+];
